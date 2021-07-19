@@ -6,6 +6,13 @@ name = "pypi"
 [packages]
 requests = "*"
 beautifulsoup4 = "*"
+numpy = "*"
+pandas = "*"
+jupyter = "*"
+reppy = "*"
+pysocks = "*"
+selenium = "*"
+scrapy = "*"
 
 [dev-packages]
 

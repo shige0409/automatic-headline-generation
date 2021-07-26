@@ -1,2 +1,6 @@
+experiment/*
+!notebook
+
 scraping/*
 !notebook
+

@@ -14,6 +14,8 @@ pysocks = "*"
 selenium = "*"
 scrapy = "*"
 mecab-python3 = "*"
+matplotlib = "*"
+mojimoji = "*"
 
 [dev-packages]
 

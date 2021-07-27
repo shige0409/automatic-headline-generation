@@ -1,6 +1,0 @@
-experiment/*
-!notebook
-
-scraping/*
-!src
-

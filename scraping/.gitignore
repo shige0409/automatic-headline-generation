@@ -1,0 +1,7 @@
+.venv/
+.vscode/
+data/
+notebook/
+private/
+
+*.log

@@ -2,5 +2,5 @@ experiment/*
 !notebook
 
 scraping/*
-!notebook
+!src
 

@@ -19,9 +19,9 @@ main_category_count_df = df.groupby("main_category").url.count()
 use_main_category = main_category_count_df.index[main_category_count_df > 100].to_list()
 df = df[df.main_category.isin(use_main_category)]
 # 記事本文の前処理
-df["context_"] = df.context.apply(utils.preprocess_context)
+df["context_"] = df.context.apply(lambda x: utils.preprocess_context(x, is_nn_tokenize=True))
 # 記事見出しの前処理
-df["title_"] = df.title.apply(utils.preprocess_context)
+df["title_"] = df.title.apply(lambda x: utils.preprocess_context(x, is_nn_tokenize=True))
 
 # 書き出し => 学習に使うデータ
 df.to_csv(config.preprocessd_csv_path, index=None)

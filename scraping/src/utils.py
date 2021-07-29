@@ -55,10 +55,15 @@ def exclude_main_category(x):
     except:
         return "None"
 
-def preprocess_context(x):
+def preprocess_context(x, is_nn_tokenize = False):
     t = re.sub(r"\s", "", x)
-    # 数字を半角に
-    t = mojimoji.zen_to_han(t, kana=False, ascii=False)
+    t = re.sub("\u3000", "", x)
+    # t = re.sub(r",", "、", x)
+    # カナ以外を半角に
+    t = mojimoji.zen_to_han(t, kana=False)
     # 数字以外を全角に
-    t = mojimoji.han_to_zen(t, digit=False)
-    return m.parse(t)
+    t = mojimoji.han_to_zen(t, digit=False, ascii=False)
+    if is_nn_tokenize:
+        return t
+    else:
+        return m.parse(t)

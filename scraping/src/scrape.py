@@ -4,17 +4,14 @@ import config
 import utils
 
 
-
-
-
 if __name__ == "__main__":
     driver = utils.get_cli_webdriver()
     article_infos = utils.load_article_bin()
 
-    for category_url in config.category_urls[4:]:
+    for category_url in config.category_urls[::-1][4:5]:
         print("カテゴリ　{} からスクレイピング開始".format(category_url))
         # 初期変数
-        pager_idx = 31
+        pager_idx = 65
         # pager_idx = 126 # 前回125ページまで行ったため
         # sportは8ページまで
         # 既にスクレイピング済みのサイトのURL
@@ -83,7 +80,7 @@ if __name__ == "__main__":
             utils.save_article_bin(article_infos)
                 
             # 30ページスクレイピングしたら次のカテゴリへ
-            if pager_idx > 50:
+            if pager_idx > 100:
                 print("次のカテゴリへ進みます")
                 break
                 

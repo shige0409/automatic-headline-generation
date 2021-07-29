@@ -19,3 +19,4 @@ category_urls = [
 
 article_bin_path = '../data/article_infos.bin'
 preprocessd_csv_path = "../data/article.csv"
+

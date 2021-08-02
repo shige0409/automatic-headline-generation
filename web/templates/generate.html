@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>タイトルジェネレーター</title>
+  <link rel="stylesheet" href="static/css/index.css">
+  <script type="text/javascript" src="sample.js"></script>
+</head>
+<body>
+  <form action="/generate" method="post">
+    <div class="inputs">
+       <label class="label">記事本文</label>
+       <textarea readonly name="article", class="input_form">
+         {{article}}
+       </textarea>
+    </div>
+  </form>
+  <h1>↓</h1>
+  <div class="inputs">
+      <h2>見出し候補: {{title}}</h1>
+  </div>
+</body>
+</html>

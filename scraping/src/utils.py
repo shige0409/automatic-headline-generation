@@ -57,7 +57,7 @@ def exclude_main_category(x):
 
 def preprocess_context(x, is_nn_tokenize = False):
     t = re.sub(r"\s", "", x)
-    t = re.sub("\u3000", "", x)
+    t = re.sub("\u3000", "", t)
     # t = re.sub(r",", "、", x)
     # カナ以外を半角に
     t = mojimoji.zen_to_han(t, kana=False)

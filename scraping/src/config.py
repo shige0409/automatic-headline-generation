@@ -20,3 +20,5 @@ category_urls = [
 article_bin_path = '../data/article_infos.bin'
 preprocessd_csv_path = "../data/article.csv"
 
+START_PAGER_IDX = 1
+END_PAGER_IDX = 10

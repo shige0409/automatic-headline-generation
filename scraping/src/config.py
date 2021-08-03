@@ -16,9 +16,10 @@ category_urls = [
  'https://news.livedoor.com/topics/category/love/',
  'https://news.livedoor.com/topics/category/trend/',
 ]
-
+# path
 article_bin_path = '../data/article_infos.bin'
 preprocessd_csv_path = "../data/article.csv"
 
+# const value
 START_PAGER_IDX = 1
 END_PAGER_IDX = 10

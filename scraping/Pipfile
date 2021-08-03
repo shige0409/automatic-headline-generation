@@ -8,7 +8,6 @@ requests = "*"
 beautifulsoup4 = "*"
 numpy = "*"
 pandas = "*"
-jupyter = "*"
 reppy = "*"
 pysocks = "*"
 selenium = "*"
@@ -16,6 +15,7 @@ scrapy = "*"
 mecab-python3 = "*"
 matplotlib = "*"
 mojimoji = "*"
+jupyterlab = "*"
 
 [dev-packages]
 

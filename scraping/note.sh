@@ -1,2 +1,2 @@
 #!/usr/bin/zsh
-nohup pipenv run jupyter notebook >> jupyter.log 2>&1 &
+nohup pipenv run jupyter lab --port 9999 >> jupyter.log 2>&1 &

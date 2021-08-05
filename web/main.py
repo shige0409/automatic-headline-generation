@@ -1,4 +1,12 @@
+import pickle
+import utils
+
 from flask import *
+from models.generater import load_transformer
+
+bert_tokenizer, keras_tokenizer = utils.load_tokenizer()
+model = load_transformer()
+
 app = Flask(__name__)
 
 @app.route('/')

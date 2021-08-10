@@ -11,4 +11,6 @@
     https://qiita.com/neruoneru/items/1107bcdca7fa43de673d
 
 4. pyenv&pipenv環境構築
-    https://qiita.com/neruoneru/items/1107bcdca7fa43de673d
+    https://qiita.com/fury00812/items/08036e78a449d1cbeb48
+
+5. スクレイピング環境構築

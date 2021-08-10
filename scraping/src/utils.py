@@ -36,15 +36,22 @@ def save_article_bin(data):
 
 def get_cli_webdriver():
     op = Options()
-    # --headlessだけではOSによって動かない、プロキシが弾かれる、
-    # CUI用の省略されたHTMLが帰ってくるなどの障害が出ます。
-    # 長いですが、これら6行あって最強かつどんな環境でも動きますので、必ず抜かさないようにしてください。
+    op.add_argument("enable-automation")
+    op.add_argument("--no-sandbox")
+    op.add_argument("--disable-infobars")
+    op.add_argument('--disable-extensions')
+    op.add_argument("--disable-dev-shm-usage")
+    op.add_argument("--disable-browser-side-navigation")
+    op.add_argument('--ignore-certificate-errors')
+    op.add_argument('--ignore-ssl-errors')
     op.add_argument("--disable-gpu")
     op.add_argument("--disable-extensions")
     op.add_argument("--proxy-server='direct://'")
     op.add_argument("--proxy-bypass-list=*")
     op.add_argument("--start-maximized")
     op.add_argument("--headless")
+    prefs = {"profile.default_content_setting_values.notifications" : 2}
+    op.add_experimental_option("prefs",prefs)
     return webdriver.Chrome(options=op)
     
 

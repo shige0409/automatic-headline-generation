@@ -6,7 +6,7 @@ headers = {
 
 # スクレイピング対象URL
 category_urls = [
-    'https://news.livedoor.com/topics/category/main/',
+ 'https://news.livedoor.com/topics/category/main/',
  'https://news.livedoor.com/topics/category/dom/',
  'https://news.livedoor.com/topics/category/world/',
  'https://news.livedoor.com/topics/category/eco/',
@@ -16,6 +16,10 @@ category_urls = [
  'https://news.livedoor.com/topics/category/love/',
  'https://news.livedoor.com/topics/category/trend/',
 ]
+# トピックスページだけではなくカテゴリページにも追加
+category_ids = [4, 1, 3, 44, 42, 2, 12, 31, 29, 201, 210, 10, 49, 214, 217, 52]
+category_urls += ["https://news.livedoor.com/article/category/{}/".format(idx) for idx in category_ids]
+
 # path
 article_bin_path = '../data/article_infos.bin'
 preprocessd_csv_path = "../data/article.csv"

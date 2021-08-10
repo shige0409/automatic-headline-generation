@@ -1,11 +1,10 @@
-import pickle
 import utils
 
 from flask import *
 from models.generater import load_transformer
 
 bert_tokenizer, keras_tokenizer = utils.load_tokenizer()
-model = load_transformer()
+tf_tranformer = load_transformer()
 
 app = Flask(__name__)
 
@@ -18,10 +17,13 @@ def odd_even():
 
 
 @app.route('/generate', methods=["POST"])
-def generate_title():
+def generate():
     if request.method == "POST":
         article = str(request.form["article"])
-        title = article[3:10]
+        clean_article = utils.preprocess_context(article)
+        title = utils.generate_title(
+            clean_article,
+            [bert_tokenizer, keras_tokenizer, tf_tranformer])
         return render_template("generate.html", article = article, title=title)
     else:
         return "ERROR"

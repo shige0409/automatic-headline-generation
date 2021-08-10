@@ -8,7 +8,7 @@ if __name__ == "__main__":
     driver = utils.get_cli_webdriver()
     article_infos = utils.load_article_bin()
 
-    for category_url in config.category_urls[::-1]:
+    for category_url in ["https://news.livedoor.com/article/category/52/"]:#config.category_urls[::-1]:
         print("カテゴリ　{} からスクレイピング開始".format(category_url))
         # 初期変数
         pager_idx = config.START_PAGER_IDX
@@ -27,7 +27,7 @@ if __name__ == "__main__":
         # 次のページへがなくなるまで繰り返す
         while True:
         # 実際にデータを収集するページのリンクを抜き取る
-            for ele in soup.find("div", attrs={"class": "mainBody"}).find_all("li"):
+            for ele in soup.find("div", attrs={"class": "mainBody"}).find("ul", attrs={"class": "articleList"}).find_all("li"):
                 # リンクを修正する
                 page_url = ele.find("a").get("href").replace("topics", "article")
                 # すでにスクレイピング済みだったら

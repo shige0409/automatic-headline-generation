@@ -1,0 +1,6 @@
+miniforge install
+conda create -n torch python=3.8
+conda install pytorch pytorch-lightning transformers numpy pandas scikit-learn jupyterlab
+pip install mecab-python3 # torchtext
+
+jupyter lab --port 9999

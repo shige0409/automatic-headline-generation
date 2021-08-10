@@ -1,0 +1,14 @@
+1. ip固定設定
+    https://qiita.com/k_ken/items/9a71655400798f84d636
+    https://zenn.dev/kenken82/articles/262520f365a673
+2. 必要ファイルDL
+    sudo apt update && sudo apt upgrade -y
+    sudo apt install -y openssh-server
+    https://codechacha.com/ja/ubuntu-install-openssh/
+
+3. 接続
+    ssh ubuntu@192.168.1.14
+    https://qiita.com/neruoneru/items/1107bcdca7fa43de673d
+
+4. pyenv&pipenv環境構築
+    https://qiita.com/neruoneru/items/1107bcdca7fa43de673d

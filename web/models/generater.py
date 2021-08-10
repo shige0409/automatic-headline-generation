@@ -16,9 +16,7 @@ def load_transformer():
     train_model.load_weights("data/train_model_weight_2.4.0.h5")
     return train_model
 
-def load_model():
-    return keras.models.load_model("weights/train_model_weight")
-
-# load_model()
-model = load_transformer()
-print(model.summary())
+# if __name__
+# # load_model()
+# model = load_transformer()
+# print(model.summary())

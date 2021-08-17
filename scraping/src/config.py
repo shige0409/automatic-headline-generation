@@ -26,5 +26,11 @@ preprocessd_csv_path = "../data/article.csv"
 
 # const value
 START_PAGER_IDX = 1
-END_PAGER_IDX = 10
+END_PAGER_IDX = 1
 IS_SELENIUM = False
+
+# slack
+POST_MESSAGE_URL = "https://slack.com/api/chat.postMessage"
+FILE_UPLOAD_URL = "https://slack.com/api/files.upload"
+TOKEN = "xoxb-289893616385-2387565836866-SQ8WNzbXPsS7JNooThtRungl"
+CHANNEL = "#scraping"

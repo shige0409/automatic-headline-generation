@@ -1,6 +1,6 @@
 # 関数
-from os import utime
 import time
+import platform
 import pickle
 import re
 
@@ -9,16 +9,18 @@ import MeCab
 import mojimoji
 
 import requests
-from requests.models import RequestEncodingMixin
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
 import config
 
-# gloval variable
-# mecabインスタンス
-# m = MeCab.Tagger("-Owakati -d /opt/homebrew/lib/mecab/dic/mecab-ipadic-neologd"
-m = MeCab.Tagger()
+
+# Macなら
+if platform.system() == "Darwin":
+    m = MeCab.Tagger("-Owakati -d /opt/homebrew/lib/mecab/dic/mecab-ipadic-neologd")
+# Ubuntuなら
+else:
+    m = None
 
 class RequestDriver():
     def __init__(self) -> None:

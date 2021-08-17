@@ -17,7 +17,8 @@ import config
 
 # gloval variable
 # mecabインスタンス
-m = MeCab.Tagger("-Owakati -d /opt/homebrew/lib/mecab/dic/mecab-ipadic-neologd")
+# m = MeCab.Tagger("-Owakati -d /opt/homebrew/lib/mecab/dic/mecab-ipadic-neologd"
+m = MeCab.Tagger()
 
 class RequestDriver():
     def __init__(self) -> None:

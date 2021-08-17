@@ -51,6 +51,7 @@ class Slacker():
                 },
                 files={"file": f}
             )
+            print(res.json())
 
 
 

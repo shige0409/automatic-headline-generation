@@ -32,5 +32,5 @@ IS_SELENIUM = False
 # slack
 POST_MESSAGE_URL = "https://slack.com/api/chat.postMessage"
 FILE_UPLOAD_URL = "https://slack.com/api/files.upload"
-TOKEN = "xoxb-289893616385-2387565836866-SQ8WNzbXPsS7JNooThtRungl"
+TOKEN = "xoxb-289893616385-2387565836866-oXJIEZn6UjwHX3rwihZotxX0"
 CHANNEL = "#scraping"

@@ -79,7 +79,7 @@ if __name__ == "__main__":
                 utils.save_article_bin(article_infos)
                     
                 # 30ページスクレイピングしたら次のカテゴリへ
-                if pager_idx > config.END_PAGER_IDX:
+                if pager_idx >= config.END_PAGER_IDX:
                     print("次のカテゴリへ進みます")
                     break
                     

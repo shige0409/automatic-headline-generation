@@ -1,3 +1,4 @@
+import os
 # これがないとスクレピングできないサイトのため
 headers = {
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.164 Safari/537.36",
@@ -32,5 +33,5 @@ IS_SELENIUM = False
 # slack
 POST_MESSAGE_URL = "https://slack.com/api/chat.postMessage"
 FILE_UPLOAD_URL = "https://slack.com/api/files.upload"
-TOKEN = "xoxb-289893616385-2387565836866-oXJIEZn6UjwHX3rwihZotxX0"
+TOKEN = os.environ.get("SLACK_BOT_TOKEN")
 CHANNEL = "#scraping"

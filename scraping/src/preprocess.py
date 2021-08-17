@@ -7,9 +7,11 @@ import config
 # pickle
 article_infos = utils.load_article_bin()
 # dataframe
-df = pd.DataFrame(article_infos, columns=["url", "date", "title", "context", "category", "keyword", "tweet_share", "quote"])
+df = pd.DataFrame(article_infos, columns=["url", "date", "title", "content", "category", "keyword", "tweet_share", "quote"])
 # 記事が消去されていたデータを除去
-df = df.query("title != 'None Title'").copy()
+df = df.query("content != 'None Title' and title != 'None Title'").copy()
+# 記事の文字数が明らかに短いのを除去
+df = df.query("content.str.len() > 10", engine="python").copy()
 # tweet_shareを数値化
 df = df.astype({"tweet_share": np.int64})
 # 文書分類用のカテゴリ抽出
@@ -22,9 +24,15 @@ df = df[df.main_category.isin(use_main_category)]
 df = df.query("main_category != 'None'").copy()
 
 # 記事本文の前処理
-df["context_"] = df.context.apply(lambda x: utils.preprocess_context(x, is_nn_tokenize=True))
+df["content_"] = df.content.apply(lambda x: utils.preprocess_text(x, is_nn_tokenize=True))
 # 記事見出しの前処理
-df["title_"] = df.title.apply(lambda x: utils.preprocess_context(x, is_nn_tokenize=True))
+df["title_"] = df.title.apply(lambda x: utils.preprocess_text(x, is_nn_tokenize=True))
+
+# 記事に数字や英語が含まれている文字の割合を抽出
+df["content_alpha_ratio"] = df.content_.apply(utils.count_is_alpha)
+df["content_num_ratio"] = df.content_.apply(utils.count_is_num)
+# 合計で25%以内だけを使う
+df = df.loc[(df.content_alpha_ratio + df.content_num_ratio) <= 0.25]
 
 # 書き出し => 学習に使うデータ
 df.to_csv(config.preprocessd_csv_path, index=None)

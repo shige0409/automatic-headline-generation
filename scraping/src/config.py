@@ -27,3 +27,4 @@ preprocessd_csv_path = "../data/article.csv"
 # const value
 START_PAGER_IDX = 1
 END_PAGER_IDX = 10
+IS_SELENIUM = False

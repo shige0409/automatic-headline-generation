@@ -5,10 +5,10 @@ import utils
 
 
 if __name__ == "__main__":
-    driver = utils.get_cli_webdriver()
+    driver = utils.get_cli_webdriver(config.IS_SELENIUM)
     article_infos = utils.load_article_bin()
 
-    for category_url in config.category_urls[::-1]:
+    for category_url in config.category_urls[::-1][7:]:
         print("カテゴリ　{} からスクレイピング開始".format(category_url))
         # 初期変数
         pager_idx = config.START_PAGER_IDX

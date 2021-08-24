@@ -18,7 +18,7 @@ import config
 # Macなら
 if platform.system() == "Darwin":
     m = MeCab.Tagger("-Owakati -d /opt/homebrew/lib/mecab/dic/mecab-ipadic-neologd")
-# Ubuntuなら
+# Ubuntuならmecab使わない
 else:
     m = None
 
@@ -28,7 +28,8 @@ class RequestDriver():
     def get(self, url):
         response = requests.get(
             url,
-            headers=config.headers
+            headers=config.headers,
+            proxies=config.proxy
             )
         self.page_source = response.content
 
@@ -42,7 +43,6 @@ class Slacker():
                 "text": text
             }
         )
-        
 
     def post_file(self, file_path):
         with open(file_path, "rb") as f:

@@ -31,7 +31,7 @@ preprocessd_csv_path = "../data/article.csv"
 # const value
 START_PAGER_IDX = 1
 END_PAGER_IDX = 1
-IS_SELENIUM = True
+IS_SELENIUM = False
 
 # slack
 POST_MESSAGE_URL = "https://slack.com/api/chat.postMessage"

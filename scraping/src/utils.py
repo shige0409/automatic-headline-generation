@@ -63,6 +63,8 @@ def get_cli_webdriver(is_selenium):
     else:
         return module.RequestDriver()
     
+def get_slacker():
+    return module.Slacker()
 
 # preprocess utils 
 def exclude_main_category(x):

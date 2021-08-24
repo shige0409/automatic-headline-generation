@@ -1,17 +1,21 @@
+from tensorflow.python import util
 import utils
 
 from flask import *
-from models.generater import load_transformer
 
 bert_tokenizer, keras_tokenizer = utils.load_tokenizer()
-tf_tranformer = load_transformer()
+model = utils.load_model()
 
 app = Flask(__name__)
 
 @app.route('/')
-def odd_even():
+def home():
     if request.method == "GET":
-        return render_template("index.html")
+        sample = utils.load_sample()
+        return render_template(
+            "index.html",
+            sample=sample
+            )
     else:
         return "ERROR"
 
@@ -21,10 +25,16 @@ def generate():
     if request.method == "POST":
         article = str(request.form["article"])
         clean_article = utils.preprocess_context(article)
-        title = utils.generate_title(
+        title, label = utils.generate_title(
             clean_article,
-            [bert_tokenizer, keras_tokenizer, tf_tranformer])
-        return render_template("generate.html", article = article, title=title)
+            [bert_tokenizer, keras_tokenizer, model],
+            beam_width=int(request.form["beamwidth"]))
+        title = utils.clean_beam_title(title)
+        return render_template(
+            "generate.html",
+            article = article,
+            title=title,
+            label=label)
     else:
         return "ERROR"
 

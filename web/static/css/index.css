@@ -12,7 +12,7 @@ form{
 .label{
 	float: left;
 	margin-right: -20px;
-	width:135px;
+	width:200px;
 	border-left: solid 3px #FF6701;
 	padding-left: 10px;
 }
@@ -30,10 +30,11 @@ textarea{
 	font-size: 15px;
 }
 textarea{
-	height: 500px;
+	height: 300px;
 }
 .btn-area{
 	text-align: center;
+	margin: 20px;
 }
 input[type="submit"]{
 	background: #FF6701;

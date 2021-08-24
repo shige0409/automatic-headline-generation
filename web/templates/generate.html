@@ -16,8 +16,13 @@
     </div>
   </form>
   <h1>↓</h1>
+  <div class="btn-area">
+    <label class="label">ニュースカテゴリ : {{label}}</label>
+  </div>
   <div class="inputs">
-      <h2>見出し候補: {{title}}</h1>
+    {% for t in title %}
+      <h3> {{t}}</h1>
+    {%endfor%}
   </div>
 </body>
 </html>

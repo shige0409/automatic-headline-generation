@@ -4,14 +4,19 @@
   <meta charset="UTF-8">
   <title>タイトルジェネレーター</title>
   <link rel="stylesheet" href="static/css/index.css">
-  <script type="text/javascript" src="sample.js"></script>
+  <script type="text/javascript" src="static/js/script.js"></script>
 </head>
 <body>
   <h1>見出し生成</h1>
   <form action="/generate" method="post">
     <div class="inputs">
        <label class="label">記事本文</label>
-       <textarea name="article", class="input_form"></textarea>
+       <textarea name="article", class="input_form">
+         {{sample}}
+       </textarea>
+    </div>
+    <div class="btn-area">
+      <label class="label">候補数</label><input type="number" name="beamwidth" value="1">
     </div>
     <div class="btn-area">
       <input type="submit" value="送信">

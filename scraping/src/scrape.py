@@ -6,7 +6,7 @@ import utils
 if __name__ == "__main__":
     driver = utils.get_cli_webdriver(config.IS_SELENIUM)
     article_infos = utils.load_article_bin()
-    slacker = utils.Slacker()
+    slacker = utils.get_slacker()
     try:
         for category_url in config.category_urls[::-1][0:1]:
             print("カテゴリ　{} からスクレイピング開始".format(category_url))

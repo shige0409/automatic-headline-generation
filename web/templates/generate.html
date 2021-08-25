@@ -1,28 +1,29 @@
 <!doctype html>
 <html lang="ja">
+
 <head>
   <meta charset="UTF-8">
   <title>タイトルジェネレーター</title>
   <link rel="stylesheet" href="static/css/index.css">
   <script type="text/javascript" src="sample.js"></script>
 </head>
+
 <body>
   <form action="/generate" method="post">
     <div class="inputs">
-       <label class="label">記事本文</label>
-       <textarea readonly name="article", class="input_form">
+      <label class="label">記事本文</label>
+      <textarea readonly name="article" , class="input_form">
          {{article}}
        </textarea>
     </div>
   </form>
   <h1>↓</h1>
-  <div class="btn-area">
-    <label class="label">ニュースカテゴリ : {{label}}</label>
-  </div>
   <div class="inputs">
     {% for t in title %}
-      <h3> {{t}}</h1>
-    {%endfor%}
+    <h3> 候補{{loop.index0+1}}: {{t}}</h1>
+      {%endfor%}
   </div>
+  <img src="static/images/test.png" alt="">
 </body>
+
 </html>

@@ -8,6 +8,7 @@ model = utils.load_model()
 
 app = Flask(__name__)
 
+
 @app.route('/')
 def home():
     if request.method == "GET":
@@ -15,7 +16,7 @@ def home():
         return render_template(
             "index.html",
             sample=sample
-            )
+        )
     else:
         return "ERROR"
 
@@ -25,20 +26,19 @@ def generate():
     if request.method == "POST":
         article = str(request.form["article"])
         clean_article = utils.preprocess_context(article)
-        title, label = utils.generate_title(
+        title = utils.generate_title(
             clean_article,
             [bert_tokenizer, keras_tokenizer, model],
             beam_width=int(request.form["beamwidth"]))
         title = utils.clean_beam_title(title)
         return render_template(
             "generate.html",
-            article = article,
-            title=title,
-            label=label)
+            article=article,
+            title=title)
     else:
         return "ERROR"
 
 
-## おまじない
+# おまじない
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=8888, threaded=True)

@@ -17,16 +17,20 @@ import module
 
 # Macなら
 if platform.system() == "Darwin":
-    m = MeCab.Tagger("-Owakati -d /opt/homebrew/lib/mecab/dic/mecab-ipadic-neologd")
+    m = MeCab.Tagger(
+        "-Owakati -d /opt/homebrew/lib/mecab/dic/mecab-ipadic-neologd")
 # Ubuntuならmecab使わない
 else:
     m = None
 
 
 # scraping
-def rand_sleep():
-    # 10秒〜30秒の間でランダムにスリープ
-    time.sleep(np.random.randint(10, 22))
+def rand_sleep(length=1000, is_random=True):
+    if is_random:
+        # 10秒〜30秒の間でランダムにスリープ
+        time.sleep(np.random.randint(10, 22))
+    else:
+        time.sleep(length)
 
 
 def load_article_bin():
@@ -36,44 +40,29 @@ def load_article_bin():
     except:
         return []
 
+
 def save_article_bin(data):
     with open(config.article_bin_path, 'wb') as f:
-        pickle.dump(data , f)
+        pickle.dump(data, f)
+
 
 def get_cli_webdriver(is_selenium):
     if is_selenium:
-        op = Options()
-        op.add_argument("enable-automation")
-        op.add_argument("--no-sandbox")
-        op.add_argument("--disable-infobars")
-        op.add_argument('--disable-extensions')
-        op.add_argument("--disable-dev-shm-usage")
-        op.add_argument("--disable-browser-side-navigation")
-        op.add_argument('--ignore-certificate-errors')
-        op.add_argument('--ignore-ssl-errors')
-        op.add_argument("--disable-gpu")
-        op.add_argument("--disable-extensions")
-        op.add_argument("--proxy-server='direct://'")
-        op.add_argument("--proxy-bypass-list=*")
-        op.add_argument("--start-maximized")
-        op.add_argument("--headless")
-        prefs = {"profile.default_content_setting_values.notifications" : 2}
-        op.add_experimental_option("prefs",prefs)
-        return webdriver.Chrome(options=op)
+        return module.WebDriver()
     else:
         return module.RequestDriver()
-    
-def get_slacker():
-    return module.Slacker()
 
-# preprocess utils 
+# preprocess utils
+
+
 def exclude_main_category(x):
     try:
         return x.split("<SEP>")[1]
     except:
         return "None"
 
-def preprocess_text(x, is_nn_tokenize = False):
+
+def preprocess_text(x, is_nn_tokenize=False):
     # 空白除去
     t = re.sub("\s", "", x)
     # 全角の空白除去
@@ -90,13 +79,15 @@ def preprocess_text(x, is_nn_tokenize = False):
     else:
         return m.parse(t)
 
+
 def count_is_alpha(t):
     try:
         x = re.sub(r"[a-zA-Z]", "<E>", t)
         return x.count("<E>") / len(t)
     except:
         return -.01
-    
+
+
 def count_is_num(t):
     try:
         x = re.sub(r"\d", "<N>", t)

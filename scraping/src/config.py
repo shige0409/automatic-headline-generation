@@ -26,8 +26,8 @@ category_urls += ["https://news.livedoor.com/article/category/{}/".format(
     idx) for idx in category_ids]
 
 # path
-article_bin_path = '../data/article_infos.bin'
-preprocessd_csv_path = "../data/article.csv"
+article_bin_path = './data/article_infos.bin'
+preprocessd_csv_path = "./data/article.csv"
 
 # const value
 START_PAGER_IDX = 1

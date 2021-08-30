@@ -9,7 +9,7 @@ if __name__ == "__main__":
 
     for category_url in config.category_urls:
         driver.slacker.post_message(
-            "{}  からスクレイピング開始します。現時点でのデータ数は{}です。".format(category_url, len(article_infos)))
+            "{}: {}  からスクレイピング開始します。現時点でのデータ数は{}です。".format(config.USER_NAME, category_url, len(article_infos)))
         # 初期変数
         pager_idx = config.START_PAGER_IDX
         # 既にスクレイピング済みのサイトのURL
@@ -18,7 +18,7 @@ if __name__ == "__main__":
         # ex. https://news.livedoor.com/topics/category/main/?p=1 にアクセスして解析
         category_pager_url = "{0}?p={1}".format(category_url, pager_idx)
         driver.get(category_pager_url)
-        print("{}のサイトから1つずつページをスクレイピング".format(category_pager_url))
+        print("{}: {}のサイトから1つずつページをスクレイピング".format(config.USER_NAME, category_pager_url))
         # 大元のソープ
         soup = BeautifulSoup(driver.page_source, "html.parser")
         # 次のページへがなくなるまで繰り返す

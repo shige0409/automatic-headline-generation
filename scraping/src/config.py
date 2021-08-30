@@ -28,6 +28,7 @@ category_urls += ["https://news.livedoor.com/article/category/{}/".format(
 # path
 article_bin_path = './data/article_infos.bin'
 preprocessd_csv_path = "./data/article.csv"
+dataset_path = "./data/datasets.bin"
 
 # const value
 START_PAGER_IDX = 1
@@ -38,4 +39,5 @@ IS_SELENIUM = True
 POST_MESSAGE_URL = "https://slack.com/api/chat.postMessage"
 FILE_UPLOAD_URL = "https://slack.com/api/files.upload"
 TOKEN = os.environ.get("SLACK_BOT_TOKEN")
+USER_NAME = os.getlogin()
 CHANNEL = "scraping"

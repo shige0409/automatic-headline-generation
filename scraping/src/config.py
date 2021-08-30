@@ -1,4 +1,5 @@
 import os
+
 # これがないとスクレピングできないサイトのため
 headers = {
     "User-Agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.164 Safari/537.36",
@@ -25,14 +26,14 @@ category_ids = [4, 1, 3, 44, 42, 2, 12, 31, 29, 201, 210, 10, 49, 214, 217, 52]
 category_urls += ["https://news.livedoor.com/article/category/{}/".format(
     idx) for idx in category_ids]
 
-# path
 article_bin_path = './data/article_infos.bin'
+article_bin_path_slack = "./data/article_infos_slack.bin"
 preprocessd_csv_path = "./data/article.csv"
 dataset_path = "./data/datasets.bin"
 
 # const value
 START_PAGER_IDX = 1
-END_PAGER_IDX = 10
+END_PAGER_IDX = 30
 IS_SELENIUM = True
 
 # slack

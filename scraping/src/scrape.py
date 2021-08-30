@@ -7,7 +7,7 @@ if __name__ == "__main__":
     driver = utils.get_cli_webdriver(config.IS_SELENIUM)
     article_infos = utils.load_article_bin()
 
-    for category_url in config.category_urls:
+    for category_url in config.category_urls[::-1]:
         driver.slacker.post_message(
             "{}: {}  からスクレイピング開始します。現時点でのデータ数は{}です。".format(config.USER_NAME, category_url, len(article_infos)))
         # 初期変数
@@ -106,5 +106,5 @@ if __name__ == "__main__":
             else:
                 print("次のカテゴリへ進みます")
                 break
-    # 全てスクレイピングし終わったら
-    driver.slacker.post_file(config.article_bin_path)
+        # カテゴリごとに一旦送信する
+        driver.slacker.post_file(config.article_bin_path)

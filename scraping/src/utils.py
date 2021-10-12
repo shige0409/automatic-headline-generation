@@ -73,6 +73,10 @@ def preprocess_text(x, is_nn_tokenize=False):
     t = mojimoji.han_to_zen(t, digit=False, ascii=False)
     # (〇〇)を丸ごと除去
     t = re.sub("\(.*?\)", "", t)
+    # URLを除去
+    t = re.sub(r"https?://[\w!\?/\+\-_~=;\.,\*&@#\$%\(\)'\[\]]+", "", t)
+    # email-アドレス除去
+    t = re.sub(r"[\w\-._]+@[\w\-._]+", "", t)
 
     if is_nn_tokenize:
         return t

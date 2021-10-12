@@ -10,8 +10,6 @@ import config
 article_infos = utils.load_article_bin()
 # dataframe
 df = pd.DataFrame(article_infos, columns=["url", "date", "title", "content", "category", "keyword", "tweet_share", "quote"])
-# 重複削除
-df.drop_duplicates(inplace=True)
 # 記事が消去されていたデータを除去
 df = df.query("content != 'None Title' and title != 'None Title'").copy()
 # 記事の文字数が明らかに短いのを除去
@@ -37,7 +35,8 @@ df["content_alpha_ratio"] = df.content_.apply(utils.count_is_alpha)
 df["content_num_ratio"] = df.content_.apply(utils.count_is_num)
 # 合計で25%以内だけを使う
 df = df.loc[(df.content_alpha_ratio + df.content_num_ratio) <= 0.25]
-
+# 重複削除
+df.drop_duplicates(inplace=True)
 # 書き出し => 学習に使うデータ
 df.to_csv(config.preprocessd_csv_path, index=None)
 print(config.preprocessd_csv_path, "に書き出し完了")
